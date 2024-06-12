@@ -4,20 +4,16 @@ pipeline {
     environment {
         DOCKER_CREDENTIALS_ID = 'docker-hub-credentials'
         DOCKER_IMAGE = 'ayoubater23/expense-tracker'
-        GITHUB_CREDENTIALS_ID = 'github-pat'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: "${GITHUB_CREDENTIALS_ID}", url: 'https://github.com/Ayoubater23/expense_tracker.git'
+                git 'https://github.com/Ayoubater23/expense_tracker.git'
             }
         }
 
         stage('Install Node.js') {
-            tools {
-                nodejs 'NodeJS 14'
-            }
             steps {
                 sh 'node -v'
                 sh 'npm -v'
