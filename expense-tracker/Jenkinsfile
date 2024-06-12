@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/ayoubater23/expense-tracker.git'
+                git 'https://github.com/Ayoubater23/expense_tracker.git'
             }
         }
 
