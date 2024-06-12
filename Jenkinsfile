@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_CREDENTIALS_ID = 'docker-hub-credentials'
+        DOCKER_CREDENTIALS_ID = 'Ayoub'
         DOCKER_IMAGE = 'ayoubater23/expense-tracker'
     }
 
@@ -38,7 +38,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', "${DOCKER_CREDENTIALS_ID}") {
+                    docker.withRegistry('https://index.docker.io/v1/', "${Ayoub}") {
                         docker.image("${DOCKER_IMAGE}:${env.BUILD_ID}").push()
                     }
                 }
