@@ -4,13 +4,13 @@ pipeline {
     environment {
         DOCKER_CREDENTIALS_ID = 'docker-hub-credentials'
         DOCKER_IMAGE = 'ayoubater23/expense-tracker'
+        GITHUB_CREDENTIALS_ID = 'github-pat' // L'ID des credentials GitHub
     }
 
     stages {
         stage('Checkout') {
             steps {
-                // Cloner le dépôt GitHub
-                git 'https://github.com/Ayoubater23/expense_tracker.git'
+                git credentialsId: "${GITHUB_CREDENTIALS_ID}", url: 'https://github.com/Ayoubater23/expense_tracker.git'
             }
         }
 
@@ -51,7 +51,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 80:80 ${DOCKER_IMAGE}:${env.BUILD_ID}'
+                sh 'docker-compose -f docker-compose.prod.yml up -d'
             }
         }
     }
