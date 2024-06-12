@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                // Cloner le dépôt GitHub
                 git 'https://github.com/Ayoubater23/expense_tracker.git'
             }
         }
