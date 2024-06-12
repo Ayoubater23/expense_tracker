@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_CREDENTIALS_ID = 'Ayoub'
+        DOCKER_CREDENTIALS_ID = 'docker-hub-credentials'
         DOCKER_IMAGE = 'ayoubater23/expense-tracker'
     }
 
@@ -47,7 +47,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker-compose -f docker-compose.prod.yml up -d'
+                sh '/usr/local/bin/docker-compose -f docker-compose.prod.yml up -d'
+
             }
         }
     }
