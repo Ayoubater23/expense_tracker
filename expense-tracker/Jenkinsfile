@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_CREDENTIALS_ID = 'docker-hub-credentials'
         DOCKER_IMAGE = 'ayoubater23/expense-tracker'
-        GITHUB_CREDENTIALS_ID = 'github-pat' // L'ID des credentials GitHub
+        GITHUB_CREDENTIALS_ID = 'github-pat'
     }
 
     stages {
@@ -63,13 +63,13 @@ pipeline {
         }
 
         success {
-            mail to: 'votre-email@example.com',
+            mail to: 'atir.ayoub@aiac.ma',
                  subject: "Build Succès: ${currentBuild.fullDisplayName}",
                  body: "Bonne nouvelle!\n\nLe build ${env.BUILD_TAG} a été un succès!"
         }
 
         failure {
-            mail to: 'votre-email@example.com',
+            mail to: 'atir.ayoub@aiac.ma',
                  subject: "Build Échoué: ${currentBuild.fullDisplayName}",
                  body: "Mauvaise nouvelle!\n\nLe build ${env.BUILD_TAG} a échoué. Veuillez vérifier les logs pour plus de détails."
         }
